@@ -31,9 +31,6 @@ These `includes` are required for the FreeRTOS and underlying system components 
 * `phy_cent.h`: Defines the macro name `LE_PHY_UUID16` and `LE_PHY_CHR_UUID16`.
 
 
-
-
-
 ## Main Entry Point
 
 The program’s entry point is the app_main() function:
@@ -184,7 +181,9 @@ nimble_port_freertos_init(blecent_host_task);
 void set_default_le_phy_before_conn(uint8_t tx_phys_mask, uint8_t rx_phys_mask)
  {
     int rc = ble_gap_set_prefered_default_le_phy(tx_phys_mask, rx_phys_mask);
-     if (rc == 0) {         MODLOG_DFLT(INFO, "Default LE PHY set successfully; tx_phy = %d, rx_phy = %d",
+     if (rc == 0) 
+     {  
+         MODLOG_DFLT(INFO, "Default LE PHY set successfully; tx_phy = %d, rx_phy = %d",
                      tx_phys_mask, rx_phys_mask);
      } else {
          MODLOG_DFLT(ERROR, "Failed to set default LE PHY");
@@ -219,9 +218,6 @@ void set_prefered_le_phy_after_conn(uint16_t conn_handle)
      }
  }
  ```
-
-
-
 
 ## Read Operation
 
@@ -259,10 +255,6 @@ blecent_read(const struct peer *peer)
   }
   ```
 
-
-
-
-
 ## Structure of Peer
 
 The structure of a peer includes fields such as its connection handle, a pointer to the next peer, a list of discovered gatt services, tracking parameters for the service discovery process, and the callbacks that get executed when service discovery completes.
@@ -284,17 +276,3 @@ struct peer {
     void *disc_cb_arg;
 };
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
